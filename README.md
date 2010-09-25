@@ -62,8 +62,8 @@ doneRecording:
 Fired when Prohibition is in 'record' mode and the user
 has finished recording her knock.
 
-Usage
------
+How To Use
+----------
 
 In this example, we've hard-coded a Knock Sequence
 and uses Prohibitions built in comparison feature.
