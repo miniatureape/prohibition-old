@@ -1,18 +1,19 @@
 /*
- * ---
- *  description: "Secret Knock" authentication
- *
- *  license: MIT-style
- *
- *  authors:
- *  - Justin Donato
- *
- *  requires:
- *  - core/1.2.4: [Class, Class.Extras, Element, Element.Event, Element.Style, Selectors]
- *
- *  provides: [Prohibition]
- *
- *  */
+---
+description: "Secret Knock" authentication
+
+license: MIT-style
+
+authors:
+- Justin Donato
+
+requires:
+- core/1.2.4: [Class, Class.Extras, Element, Element.Event, Element.Style, Selectors]
+
+provides: [Prohibition]
+
+...
+*/
 
 /*
     Copyright (c) 2010 Justin Donato
