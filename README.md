@@ -9,15 +9,7 @@ OverView
 Prohibition is a Mootools class that provides an API for doing 
 "Secret Knock" authentication. You can use a backend service to 
 handle validation, or (if you really don't care about security)
-you can include it right in your javascript and use the built-in validator.
-
-Prohibition implements an API for "Secret Knock" Authentication.
-After a user "knocks" on an element by clicking her mouse, 
-Prohibition uses a server-side service or its own internal 
-validator to provide authentication.
-
-Knock sequences are normalized so the pattern can be sped up 
-or slowed down and still be matched.
+you can use the built-in validator.
 
 Prohibition objects have an optional record mode that you can use
 to generate knock sequences.
@@ -26,6 +18,9 @@ A Knock sequence is simply a javascript array with Numbers
 between 0 and 1 that correspond to the relative time in 
 which the knock occurred. (For this reason, knocks sequences
 should be at least 3 knocks long.)
+
+Knock sequences are normalized so the pattern can be sped up 
+or slowed down and still be matched.
 
 *Important*: It should go without saying--If security is a scale
 from 0 to 10, Prohibition offers about a 1. Don't use this for 
@@ -76,7 +71,12 @@ and uses Prohibitions built in comparison feature.
         var knock = [0, .1, .2, .3, .4, 1];
         
         var door = new Prohibition('door');
+
         door.addEvent('doneKnocking', function(seq){
+            
+            // We use the built in 'compare' method
+            // and pass in the two knocks to compare
+
             var authd = door.compare(knock, seq); 
             if(authd){
                // knock is correct: redirect, update ui, etc 
@@ -95,6 +95,9 @@ your authentication on the backend:
 
         var door = new Prohibition('door', {'record': true});
         door.addEvent('doneRecording', function(seq){
+            
+            // url goes to some service that knows how to
+            // compare knocks.
 
             var req = new Request.JSON({
                 'url': 'http://localhost:8000/',
@@ -108,7 +111,6 @@ your authentication on the backend:
             req.send();
         });
 
-Of you an just redirect on the server side, etc.
 
 Validating Knocks on the Server
 -------------------------------
